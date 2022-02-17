@@ -17,11 +17,9 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-test')
     implementation 'junit:junit:4.13.1'
 
-    //lombok plugin
-    implementation('org.projectlombook:lombok')
-    annotationProcessor('org.projectlombok:lombok')
 
-    //test환경
-    testImplementation('org.projectlombook:lombok')
+    implementation('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
     testAnnotationProcessor('org.projectlombok:lombok')
 }
