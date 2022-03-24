@@ -2,7 +2,11 @@ package com.knit.springboot.web.dto;
 
 import com.knit.springboot.domain.posts.Posts;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 public class PostsSaveRequestDto {
     private String title;
     private String content;
