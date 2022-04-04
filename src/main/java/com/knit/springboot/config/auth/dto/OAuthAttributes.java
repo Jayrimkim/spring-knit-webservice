@@ -1,5 +1,6 @@
 package com.knit.springboot.config.auth.dto;
 
+import com.knit.springboot.domain.user.Role;
 import com.knit.springboot.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,13 +24,15 @@ public class OAuthAttributes {
         this.picture=picture;
     }
 
-    public static OAuthAttributes of(String registrationId, String userNameAttributes, Map<String, Object> attributes) {
+    public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         return ofGoogle(userNameAttributeName, attributes);
     }
 
-    public User toEntity(){
-        return User.builder().name(name).email(email).picture(picture).role(role).build();
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String,Object> attributes){
+        return OAuthAttributes.builder().name((String) attributes.get("name")).email((String) attributes.get("email")).picture((String) attributes.get("picture")).attribues(attributes).nameAttributeKey(userNameAttributeName).build();
     }
 
-
+    public User toEntity(){
+        return User.builder().name(name).email(email).picture(picture).role(Role.GUEST).build();
+    }
 }
